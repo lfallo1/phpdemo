@@ -1,8 +1,8 @@
 <?php
 
-require_once 'db_connection.php';
+require_once 'SuperheroService.php';
 
-$superheroes = get_superheroes();
+$superheroes = SuperheroService::getInstance()->get_superheroes();
 
 foreach($superheroes as $s){
     echo $s->__toString();

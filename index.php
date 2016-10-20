@@ -1,7 +1,13 @@
 <?php
+
+// register autoload with PHP.
+function IndexAutoload($class){
+    require_once 'databases/' . $class . '.php';
+}
+spl_autoload_register('IndexAutoload');
+
 //Load superhero list
-require_once 'databases/db_connection.php';
-$superheroes = get_superheroes();
+$superheroes = SuperheroService::get_instance()->get_superheroes();
 
 //generate some bogus variables
 $title = 'Welcome to the homepage';
@@ -30,19 +36,19 @@ $welcome = "{$title}, {$username}";
         <thead>
             <tr>
                 <th>Alias</th>
-                <th>Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
             </tr>
         </thead>
         <tbody>
             <!--START LIST OF SUPERHEROES-->
-            <?php
-            foreach($superheroes as $s){ 
-            ?>
+            <?php foreach($superheroes as $s) :  ?>
             <tr>
                 <td><? echo $s->get_alias() ?></td>
-                <td><? echo $s->get_first_name() . ' ' . $s->get_last_name() ?></td>
+                <td><? echo $s->get_first_name() ?></td>
+                <td><? echo $s->get_last_name() ?></td>
             </tr>
-            <?php } ?>
+            <?php endforeach ?>
             <!--END LIST OF SUPERHEROES-->
         </tbody>
     </table>
