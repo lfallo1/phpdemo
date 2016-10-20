@@ -1,0 +1,36 @@
+- Add the following to the end of your php.ini file
+[XDebug]
+zend_extension=/usr/lib/php/extensions/no-debug-non-zts-20121212/xdebug.so
+xdebug.remote_autostart=0
+xdebug.remote_enable=1
+xdebug.remote_handler="dbgp"
+xdebug.remote_host=192.168.1.154
+xdebug.remote_connect_back=0
+xdebug.remote_port=9001
+xdebug.remote_mode=req
+xdebug.idekey="netbeans-xdebug"
+
+- In netbeans, configure the php debugger to use the same port and session-id (this is the xdebug.idekey) as in php.ini
+
+- for command line debugging, set the php interpreter to your php binary inside the XAMPP bin folder.
+
+NOTE: If not using XAMPP, copy the php.ini contents into wherever your binary is. Set an environment variable with the name of the debug session (you can get this from the query string in the url of the page netbeans launches when you start debugging) so the command is: export XDEBUG_CONFIG="idekey=netbeans-xdebug"
+
+
+
+
+
+RUN CONFIGURATIONS
+- command line / console execution
+set run as to “Script (run in command line)”
+ensure the PHP interpreter is pointing to the php interpreter file
+
+- web execution to “Local Web Site” (assumes you have an apache server running)
+
+In both cases, make sure to set an “index” file (does not have to be index.php)
+
+Run buttons
+- Main Run / Debug Buttons - runs / debugs with the current configuration
+- File Run / Debug Buttons - runs / debugs the current file
+- These runs will use the current run configs method (command line / local web site).  The file runs, ignore the specified index file in the run config (which obviously is good, because it allows you to run a specified file).
+
