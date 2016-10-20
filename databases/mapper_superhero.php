@@ -5,7 +5,6 @@ require_once 'Suit.php';
 function map_superhero_suits($rs, &$ret = null){
     $ret = array();
     foreach($rs as $row){
-        echo 'Alias: ' . $row['alias'] . PHP_EOL;
         
         $superhero = new Superhero($row['first_name'], $row['last_name'], $row['alias'], $row['superhero_id']);
 
