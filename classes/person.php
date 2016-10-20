@@ -35,27 +35,3 @@ class Person{
         return $this->firstname . ' ' . $this->lastname . ' ' . $this->age .PHP_EOL;
     }
 }
-
-class Superhero extends Person {
-    protected $alias;
-    public function __construct($firstname = '', $lastname = '', $age = 0, $alias='') {
-        echo 'Superhero constructor' .PHP_EOL;
-        parent::__construct($firstname, $lastname, $age);
-        $this->alias = $alias;
-    }
-    
-    public function to_string() {
-        return '(Superhero) ' . $this->alias . ': ' . parent::to_string();
-    }
-}
-
-//$p1 = new Person('kara','smith',29);
-$p2 = new Superhero('bruce', 'wayne', '40', 'batman');
-
-//$p1->setFirstname('lance');
-//$p1->setLastname('fallon');
-//$p1->setAge(30);
-
-echo $p2->to_string();
-
-echo Person::AVG_LIFE;
